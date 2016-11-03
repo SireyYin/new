@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            position:absolute;
+            top:100px;
+            left:100px;
+            text-indent: 90px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    $(function(){
+        /*$('#box').animate({ textIndent: 0 }, {
+         step: function(now,fx) {
+         $(this).css('-webkit-transform','scale('+now+')');
+         },
+         duration:'slow'
+         },'linear');*/
+        /*$("#box").animate({
+            deg: 45
+        }, {
+            step: function(n, fx) {
+                console.log(n);
+                $(this).css("transform", "rotate(" + n + "deg)");
+            },
+            duration:2000
+        });*/
+        $("#box").animate({
+            first:2,
+            second:10
+        }, {
+            step:function(n,fx){
+                // 动画元素的每个动画属性每一次动画效果的执行都将调用的函数。第1个参数是当前动画正在改变的属性的实时值（每1次动画过程中，属性值的实时反馈呈现）；第2个参数为修改Tween 对象提供了一个机会来改变animate第1个参数中设置的属性在动画结束时的值。
+                // fx: jQuery.fx 原型对象的一个引用,其中包含了多项属性,比如
+                // 执行动画的元素：elem;
+                // 动画正在改变的属性：prop;
+                // 正在改变属性的当前值：now;
+                // 正在改变属性的结束值：end;
+                // 正在改变属性的单位：unit;等
+
+                // 可在这里改变animate第1个参数中设置的属性second在动画结束时的值
+                if(fx.prop=="second"){fx.end=5}
+                console.log(fx.prop+": "+n);
+            },
+            duration:2000
+        })
+    })
+</script>
+
+</body>
+</html>
